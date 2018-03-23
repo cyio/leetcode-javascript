@@ -49,9 +49,10 @@ var myAtoi = function(str) {
     // str.charCodeAt(index) 返回字符串某个位置上字符的 unicode 编码
     for(var i = 0; i < str.length; i++) {
         var c = str[i];
-        // Number 转换不准?
-        // var charCode = c.charCodeAt(0) - baseCharCode;
-        var charCode = Number(c)
+        // Number 转换单字符不准，比如空字符会转为 0
+        // var charCode = Number(c)
+        // 解决是通过与 0 的 charCode 算差值
+        var charCode = c.charCodeAt(0) - baseCharCode;
         
         if(0 <= charCode && charCode <= 9) {
             num *= 10;
