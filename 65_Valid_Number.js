@@ -27,9 +27,7 @@
 // 科学计数法 1.2e-4 = 1.2 * (10 ** -4) = 0.00012
 // 开头结尾仅可以有空格，如'  9 '
 
-var isNumber = function(s) {
-  return !!s.match(/^\s*[+-]?(\d+\.\d+|\d+\.|\.\d+|\d+)(\e[+-]?\d+)?\s*$/);
-};
+var isNumber = s => !!s.match(/^\s*[+-]?(\d+\.\d+|\d+\.|\.\d+|\d+)(\e[+-]?\d+)?\s*$/);
 
 let n = '  9  0'
 console.log(isNumber(n))
