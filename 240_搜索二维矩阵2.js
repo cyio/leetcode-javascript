@@ -6,6 +6,7 @@
 // 思路1: 右上角数字特殊性，O(m+n)
 // [【C++】 LeetCode 240. 搜索二维矩阵 II - 沧海漂游的博客 - CSDN博客](https://blog.csdn.net/lv1224/article/details/80960083)
 var searchMatrix = function(matrix, target) {
+  if (!matrix.length || !matrix[0] || !matrix[0].length) return false
   const m = matrix.length, n = matrix[0].length;
   let r = 0, c = n - 1;
   while(r < m && c >= 0) {

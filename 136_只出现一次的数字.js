@@ -2,6 +2,7 @@
 // 输出: 4
 
 // 思路1: 若该数组有序，且有一个元素只出现一次，以步数2向后遍历，那么一定会存在a[i] != a[i+1]
+// 时间复杂度 n/2，所以是 n
 var singleNumber = function(nums) {
   if (nums.length === 1) return nums[0]
   nums = nums.sort()

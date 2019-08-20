@@ -20,3 +20,8 @@
 [数据结构与算法/leetcode/lintcode题解 Preface · GitBook](https://algorithm.yuanbin.me/zh-hans/)
 [imcoddy/leetcode: My leetcode solutions](https://github.com/imcoddy/leetcode)
 [LeetCode 算法题刷题心得（JavaScript） - 前端 - 掘金](https://juejin.im/entry/5af391bc51882567203410f1)
+
+解题参考：
+[google-interview-preparation-problems/src at master · mgechev/google-interview-preparation-problems](https://github.com/mgechev/google-interview-preparation-problems/tree/master/src)
+[Interview/docs/Algorithm/Leetcode/JavaScript at master · apachecn/Interview](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/JavaScript)
+[Interview/docs/Algorithm/剑指offer/JavaScript at master · apachecn/Interview](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/%25E5%2589%2591%25E6%258C%2587offer/JavaScript)

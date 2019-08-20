@@ -8,10 +8,9 @@
 
 var reverse = function(x) {
   var reverseX = +String(Math.abs(x)).split('').reverse().join('')
-	if (reverseX > 0x7FFFFFFF) {
-			return 0
-	}
-  return x < 0 ? -reverseX : reverseX
+  reverseX = x > 0 ? reverseX : -reverseX
+  if (reverseX > Math.pow(2, 31) || reverseX < Math.pow(-2, 31) - 1) return 0
+  return reverseX
 };
 
 console.log(reverse(1534236469))
