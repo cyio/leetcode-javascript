@@ -38,6 +38,7 @@ class LinkedList {
 		return currNode
 	}
 
+  // 这里写的有问题吗，对比 01
 	insert (newElement, item) {
 		let newNode = new Node(newElement)
 		let current = this.find(item)

@@ -8,7 +8,7 @@ var countCharacters = function(words, chars) {
   const charsArr = chars.split('')
   for (let i = 0; i < words.length; i++) {
     const letters = words[i].split('')
-    let hasUnMatch = false
+    let failCount = false
     const charsArrCopy = [...charsArr]
     for (let j = 0; j < letters.length; j++) {
       const index = charsArrCopy.indexOf(letters[j])
@@ -17,11 +17,11 @@ var countCharacters = function(words, chars) {
         charsArrCopy.splice(index, 1)
       } else {
         // 终止当前 word 拼写
-        hasUnMatch = true
+        failCount = true
         break
       }
     }
-    if (!hasUnMatch) {
+    if (!failCount) {
       matchWords.push(words[i])
     }
   }

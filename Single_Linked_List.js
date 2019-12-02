@@ -7,6 +7,8 @@ class Node {
 
 class LinkedList {
   constructor() {
+    // 在类里使用 this
+    // Node = element + next
     this.head = new Node('head')
   }
 
@@ -14,12 +16,13 @@ class LinkedList {
   // 都不符合时返回尾节点的 next ，即 null
   find(item) {
     let currNode = this.head
-    while (currNode.element !== item) {
+    while (currNode !== null && currNode.element !== item) {
       currNode = currNode.next
     }
     return currNode
   }
 
+  // 删除节点需要找到前节点
   // next 有数据才需要判断，尾节点不需要判断
   findPrevious(item) {
     let currNode = this.head
@@ -32,6 +35,7 @@ class LinkedList {
   insert(newElement, item) {
     let newNode = new Node(newElement)
     let current = this.find(item)
+    // 注意顺序，current.next 后变
     newNode.next = current.next
     current.next = newNode
   }
@@ -57,3 +61,4 @@ cities.insert('shanghai', 'beijing')
 cities.insert('shenzhen', 'shanghai')
 cities.remove('shenzhen')
 cities.display()
+console.log(cities.find('haha'))

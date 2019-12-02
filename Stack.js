@@ -37,7 +37,7 @@ let stack = new Stack()
 stack.push(6)
 stack.push(5)
 stack.pop()
-console.log(stack.peek())
+// console.log(stack.peek())
 
 // 十进制转二进制
 const dec2bin = decNumber => {
@@ -57,4 +57,6 @@ const dec2bin = decNumber => {
 	return binayriString
 }
 
-console.log(dec2bin(10))
+// console.log(dec2bin(10))
+
+module.exports = new Stack()
