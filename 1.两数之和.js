@@ -10,23 +10,18 @@
  * @param {number} target
  * @return {number[]}
  */
-// hash 方式如何实现 
 var twoSum = function(nums, target) {
-  let i, j;
-  // 想不清楚遍历边界，在大脑中先模拟这个过程
-  for (i = 0; i < nums.length - 1; i++) {
-    for (j = i + 1; j < nums.length; j++) {
-      if (nums[i] + nums[j] === target)  {
-        return [i, j]
-        // break
-      }
+  const map = new Map()
+  for (let i = 0; i < nums.length; i++) {
+    const otherIndex = map.get(target - nums[i])
+    if (otherIndex !== undefined) {
+      return [otherIndex, i]
+    } else {
+      map.set(nums[i], i)
     }
   }
-  return []
 };
 
-// console.log(twoSum([2, 7, 11, 15], 9))
-// [ 0, 1 ]
-// console.log(twoSum([2, 7, 11, 15], 8))
+// 时间：O(n)，因为 map 是 O(1)
 // @lc code=end
 
