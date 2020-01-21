@@ -45,5 +45,6 @@ function hasSameArray(nums, arr) {
 console.log(threeSum([-1, 0, 1, 2, -1, -4]))
 
 // 1. 三重循环，加数组是否重复判断。数据大时执行超出时间限制 pass，如连续的负数
+// https://leetcode-cn.com/problems/3sum/solution/three-sum-ti-jie-by-wonderful611/
 // @lc code=end
 

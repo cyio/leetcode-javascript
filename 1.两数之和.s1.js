@@ -10,7 +10,6 @@
  * @param {number} target
  * @return {number[]}
  */
-// hash 方式如何实现 
 var twoSum = function(nums, target) {
   let i, j;
   // 想不清楚遍历边界，在大脑中先模拟这个过程

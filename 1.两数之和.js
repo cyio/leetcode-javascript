@@ -13,15 +13,20 @@
 var twoSum = function(nums, target) {
   const map = new Map()
   for (let i = 0; i < nums.length; i++) {
-    const otherIndex = map.get(target - nums[i])
-    if (otherIndex !== undefined) {
-      return [otherIndex, i]
+    const num1 = nums[i]
+    const num2 = target - nums[i] // pair 条件
+    const num2Index = map.get(num2)
+    // 如果存在 pair 则返回，否则往 map 中加数
+    // map get 不存在，返回 undefined，如果存在有效值，应该返回数字
+    if (num2Index !== undefined) { 
+      return [num2Index, i]
     } else {
-      map.set(nums[i], i)
+      map.set(num1, i)  // 这里值在前，索引在后，方便找值
     }
   }
 };
 
 // 时间：O(n)，因为 map 是 O(1)
+// console.log(twoSum([2, 7, 11, 15], 9))
 // @lc code=end
 

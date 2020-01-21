@@ -10,18 +10,14 @@
  * @return {number}
  */
 var reverse = function(x) {
-  // 1. 主要复用字符串反转方法，注意最后要转回数字
-  var reverseX = +String(Math.abs(x))
+  // 1. 主要复用字符串反转方法，注意最后转回数字时的正负处理
+  const reverseXStr = +String(Math.abs(x))
     .split('')
     .reverse()
     .join('')
-  reverseX = x > 0 ? reverseX : -reverseX
-  var isBeyondBorder = reverseX > Math.pow(2, 31) || reverseX < Math.pow(-2, 31) - 1
-  if (isBeyondBorder) {
-    return 0
-  } else {
-    return reverseX
-  }
+  const reverseX = x > 0 ? +reverseXStr : -reverseXStr
+  const isBeyondBorder = reverseX > Math.pow(2, 31) || reverseX < Math.pow(-2, 31) - 1
+  return isBeyondBorder ? 0 : reverseX
 };
 
 // 对于位运算，JavaScript仅支持32位整型数：
