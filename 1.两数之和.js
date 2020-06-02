@@ -11,13 +11,14 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
+  // 对 Map 不是很熟悉
   const map = new Map()
   for (let i = 0; i < nums.length; i++) {
     const num1 = nums[i]
     const num2 = target - nums[i] // pair 条件
     const num2Index = map.get(num2)
-    // 如果存在 pair 则返回，否则往 map 中加数
-    // map get 不存在，返回 undefined，如果存在有效值，应该返回数字
+    // 如果存在 pair 则返回，否则存入 map
+    // map get 不存在，返回 undefined，如果存在有效值，应该返回数字（数字可能是 0 ，所以判断要强一致）
     if (num2Index !== undefined) { 
       return [num2Index, i]
     } else {
@@ -27,6 +28,7 @@ var twoSum = function(nums, target) {
 };
 
 // 时间：O(n)，因为 map 是 O(1)
+// 笨办法是 O(n平方)
 // console.log(twoSum([2, 7, 11, 15], 9))
 // @lc code=end
 
