@@ -25,3 +25,4 @@
 [google-interview-preparation-problems/src at master · mgechev/google-interview-preparation-problems](https://github.com/mgechev/google-interview-preparation-problems/tree/master/src)
 [Interview/docs/Algorithm/Leetcode/JavaScript at master · apachecn/Interview](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/Leetcode/JavaScript)
 [Interview/docs/Algorithm/剑指offer/JavaScript at master · apachecn/Interview](https://github.com/apachecn/Interview/tree/master/docs/Algorithm/%25E5%2589%2591%25E6%258C%2587offer/JavaScript)
+[序 | LeetCode Cookbook](https://books.halfrost.com/leetcode/)
