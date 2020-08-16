@@ -2,22 +2,21 @@
 // compose 函数只能有一个参数
 
 function compose(...fns) {
-  return (arg) => fns.reduceRight((acc, cur) => cur(acc), arg)
+  // 返回的是函数，参数来自最初调用
+  return arg => fns.reduceRight((acc, curFn) => curFn(acc), arg)
 }
 
 function a(msg) {
-  return msg + "a";
+  return msg + 'a'
 }
 function b(msg) {
-  return msg + "b";
+  return msg + 'b'
 }
 function c(msg) {
-  return msg + "c";
+  return msg + 'c'
 }
 
-const f = compose(
-  a,
-  b,
-  c
-);
-console.log(f("hello "));
+const f = compose(a, b, c)
+const r = f('hello ')
+
+console.log(r) // hello cba
