@@ -32,3 +32,7 @@ var twoSum = function(nums, target) {
 // console.log(twoSum([2, 7, 11, 15], 9))
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = twoSum;
+// @after-stub-for-debug-end
