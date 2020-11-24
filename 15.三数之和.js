@@ -9,42 +9,45 @@
  * @param {number[]} nums
  * @return {number[][]}
  */
+// -4, -1, -1, 0, 1, 2
+// -4 -1 2
 var threeSum = function(nums) {
-  const sorted = nums.sort((a, b) => a - b) // 从小到大排序
-  // 长度不符；排序后的数组，如果最小值大于 0 或最大值小于 0 时，一定不满足
-  if (sorted.length < 3 || sorted.length === 0 || sorted[0] > 0 || sorted[sorted.length - 1] < 0) return []
-  const result = []
-  for (let i = 0; i < sorted.length; i++) {
-    let a = sorted[i]
-    if (a < 0 && sorted[i + 2] < 0) continue
-    // if (a > 0) continue
-    for (let j = i + 1; j < sorted.length; j++) {
-      let b = sorted[j]
-      for (let k = j + 1; k < sorted.length; k++) {
-        let c = sorted[k]
-        // console.log(a, b, c)
-        if (a + b + c === 0) {
-          if (!hasSameArray(result, [a, b, c])) {
-            result.push([a, b, c])
-          }
+  if (nums.length < 3) return []
+  // 从小到大排序
+  nums.sort((a, b) => a - b)
+  const n = nums.length
+  const res = []
+  // 最小值大于 0 或者 最大值小于 0，说明没有无效答案
+  if (nums[0] > 0 || nums[n - 1] < 0) return res
+  for (let i = 0; i < n; i++) {
+    // 如果当前值大于 0，和右侧的值再怎么加也不会等于 0，所以直接退出
+    if (nums[i] > 0) return res
+    // 当前循环的值和上次循环的一样，就跳过，避免重复值
+    if (i > 0 && nums[i] === nums[i - 1]) continue
+    // 双指针
+    let l = i + 1
+    let r = n - 1
+    while(l < r){
+      const sum = nums[i] + nums[l] + nums[r]
+      if (sum > 0) r--
+      if (sum < 0) l++
+      if (sum === 0) {
+        res.push([nums[i], nums[l], nums[r]])
+        // 跳过重复值，依然以 i 为锚，当 l 或 r 重复时，整个解就重复了
+        while(l < r && nums[l] === nums[l + 1]){
+          l++
         }
+        // 跳过重复值
+        while(l < r && nums[r] === nums[r + 1]){
+          r--
+        }
+        // 当找到解时，左右都要移动，因为只移动一边一定不符合解
+        l++
+        r--
       }
     }
   }
-  return result
+  return res
 };
-
-function hasSameArray(nums, arr) {
-  return nums.some(item => {
-    return item.every((value, index) => {
-      return value === arr[index]
-    })
-  })
-}
-
-console.log(threeSum([-1, 0, 1, 2, -1, -4]))
-
-// 1. 三重循环，加数组是否重复判断。数据大时执行超出时间限制 pass，如连续的负数
-// https://leetcode-cn.com/problems/3sum/solution/three-sum-ti-jie-by-wonderful611/
 // @lc code=end
 
