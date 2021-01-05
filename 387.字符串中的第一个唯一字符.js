@@ -9,18 +9,22 @@
  * @param {string} s
  * @return {number}
  */
+// 借助 map 存储字符出现次数，需要两次遍历
+// 时间 O(n)
 var firstUniqChar = function(s) {
-  if (s.length === 0) return -1
-  if (s.length === 1) return 0
-  let set = new Set()
-  for(let i = 0; i < s.length; i++){
-    if (i + 1 < s.length && !set.has(s[i]) && !s.substr(i + 1).includes(s[i])){
-      return i
-    } else {
-      set.add(s[i])
-    }
+  let map = new Map()
+  for (let i = 0, len = s.length; i < len; i++) {
+    let count = (map.get(s[i]) || 0) + 1 // 需要括号，逻辑与 + 的优先级？
+    map.set(s[i], count)
+  }
+  for (let i = 0, len = s.length; i < len; i++) {
+    if (map.get(s[i]) === 1) return i
   }
   return -1
 };
 // @lc code=end
 
+
+// @after-stub-for-debug-begin
+module.exports = firstUniqChar;
+// @after-stub-for-debug-end

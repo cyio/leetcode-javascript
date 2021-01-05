@@ -9,7 +9,33 @@
  * @param {string} str
  * @return {number}
  */
+// abba
+// dvdf pwwkew
+// 官方题解写法，在 map 中维护窗口字符（不关心顺序）
 var lengthOfLongestSubstring = function(s) {
+  const hash = new Map()
+  let maxLen = 0;
+  let n = s.length
+  let r = -1
+  for (let i = 0; i < n; i++){
+    if (i > 0) {
+      hash.delete(s[i - 1]) // 移动左指针，从窗口移除上一个字符
+    }
+    
+    // 维护有效窗口，每次迭代 r 不需要重置，因为可以保证当前窗口有效
+    // r + 1 表示向右移动一个元素
+    while(r + 1 < n && !hash.has(s[r + 1])) { // 移动右指针的条件
+      hash.set(s[r + 1], i)
+      r++ // 移动右指针
+    }
+
+    // 最大窗口 [i, r]
+    maxLen = Math.max(maxLen, r - i + 1)
+  }
+  
+  return maxLen;
+};
+var lengthOfLongestSubstring3 = function(s) {
   const record = new Map()
   let maxLen = 0;
   let head = 0
@@ -17,9 +43,9 @@ var lengthOfLongestSubstring = function(s) {
   while(tail < s.length){
     const item = s[tail]
     if (record.has(item) && head <= record.get(item)){ // head 移动条件：窗口内发生重复
-      // const lastRepeatIndex = record.get(item)
-      // if (head <= lastRepeatIndex) head = lastRepeatIndex + 1
+      const lastRepeatIndex = record.get(item)
       head = lastRepeatIndex + 1
+      // if (head <= lastRepeatIndex) head = lastRepeatIndex + 1
     }
     record.set(item, tail)
     maxLen = Math.max(maxLen, tail - head + 1)
@@ -28,7 +54,6 @@ var lengthOfLongestSubstring = function(s) {
   
   return maxLen;
 };
-// dvdf pwwkew
 var lengthOfLongestSubstring2 = function(s) {
   let maxStrLen = 0;
   let tmpStr = '';
