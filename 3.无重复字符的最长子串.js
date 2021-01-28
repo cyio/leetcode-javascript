@@ -12,21 +12,23 @@
 // abba
 // dvdf pwwkew
 // 官方题解写法，在 map 中维护窗口字符（不关心顺序）
+// 窗口只需要一个，定义在外层
 var lengthOfLongestSubstring = function(s) {
   const hash = new Map()
   let maxLen = 0;
   let n = s.length
   let r = -1
+  // 外循环移动左指针，内循环移动右指针
   for (let i = 0; i < n; i++){
     if (i > 0) {
       hash.delete(s[i - 1]) // 移动左指针，从窗口移除上一个字符
     }
     
     // 维护有效窗口，每次迭代 r 不需要重置，因为可以保证当前窗口有效
-    // r + 1 表示向右移动一个元素
+    // r + 1 表示向右移动一个元素，先检查再决定是否要移动
     while(r + 1 < n && !hash.has(s[r + 1])) { // 移动右指针的条件
-      hash.set(s[r + 1], i)
-      r++ // 移动右指针
+      hash.set(s[r + 1], 1)
+      r += 1 // 移动右指针
     }
 
     // 最大窗口 [i, r]
